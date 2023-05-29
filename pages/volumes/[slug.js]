@@ -1,0 +1,32 @@
+import { useRouter } from "next/router";
+
+export default function VolumeDetail(){
+   const router = useRouter();
+   const {volumeSlug} = router.query; 
+
+   const volume = volumes.find(
+    ({ volume }) => volume.slug === volumeSlug
+  );
+  return (
+    <>
+      <Link href="/volumes"> All Volumes</Link>
+      <h1>{volume.title}</h1>
+      <p>{volume.description} </p>
+      <ul>
+        {volume.books.map((book) => (
+          <li key={book.ordinal}>
+            <strong>{`${book.ordinal} : ${book.title}`}</strong>{" "}
+          </li>
+        ))}
+      </ul>
+      <div>
+        <Image src={volume.cover} width={140} height={230} alt="Volume cover" />
+      </div>
+
+      <div>
+        <Link href="/volumes/the-two-towers">Next Volume</Link>
+      </div>
+    </>
+  );
+}
+
