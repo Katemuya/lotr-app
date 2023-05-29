@@ -5,9 +5,13 @@ import { volumes } from "@/lib/data";
 
 export default function VolumeDetail() {
   const router = useRouter();
-  const { volumeSlug } = router.query;
+  const { slug } = router.query;
 
-  const volume = volumes.find(({ volume }) => volumes.slug === volumeSlug);
+  console.log(slug);
+  const volume = volumes.find((volume) => volume.slug === slug);
+
+  const page = volumes.indexOf(volume);
+
   return (
     <>
       <Link href="/volumes"> All Volumes</Link>
@@ -21,12 +25,24 @@ export default function VolumeDetail() {
         ))}
       </ul>
       <div>
-        <Image src={volume.cover} width={140} height={230} alt="Volume cover" />
+        <Image src={volume.cover} width={140} height={230} alt={volume.slug} />
       </div>
 
-      {/* <div>
-        <Link href={"/volumes/"}>Next Volume</Link>
-      </div> */}
+      <div>
+        {page === 0 ? (
+          <></>
+        ) : (
+          <Link href={`/volumes/${volumes[page - 1].slug}`}>
+            Previous Volume
+          </Link>
+        )}
+
+        {page === volumes.length - 1 ? (
+          <></>
+        ) : (
+          <Link href={`/volumes/${volumes[page + 1].slug}`}>Next Volume</Link>
+        )}
+      </div>
     </>
   );
 }
