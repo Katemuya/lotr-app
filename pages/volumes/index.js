@@ -21,7 +21,6 @@ export default function Volumes() {
           })}
         </ul>
       </div>
-      <ul></ul>
     </>
   );
 }

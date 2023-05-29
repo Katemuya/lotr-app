@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
+import Link from "next/link";
+import Image from "next/image";
+import { volumes } from "@/lib/data";
 
-export default function VolumeDetail(){
-   const router = useRouter();
-   const {volumeSlug} = router.query; 
+export default function VolumeDetail() {
+  const router = useRouter();
+  const { volumeSlug } = router.query;
 
-   const volume = volumes.find(
-    ({ volume }) => volume.slug === volumeSlug
-  );
+  const volume = volumes.find(({ volume }) => volumes.slug === volumeSlug);
   return (
     <>
       <Link href="/volumes"> All Volumes</Link>
@@ -23,10 +24,9 @@ export default function VolumeDetail(){
         <Image src={volume.cover} width={140} height={230} alt="Volume cover" />
       </div>
 
-      <div>
-        <Link href="/volumes/the-two-towers">Next Volume</Link>
-      </div>
+      {/* <div>
+        <Link href={"/volumes/"}>Next Volume</Link>
+      </div> */}
     </>
   );
 }
-
