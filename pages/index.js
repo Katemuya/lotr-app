@@ -13,7 +13,6 @@ export default function HomePage() {
     return array[Math.floor(Math.random() * array.length)];
   }
 
-  const { volumeSlug } = router.query;
   return (
     <div>
       <ul>
