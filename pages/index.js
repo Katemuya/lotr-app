@@ -2,6 +2,7 @@ import Link from "next/link";
 import { volumes } from "@/lib/data";
 import { useRouter } from "next/router.js";
 
+//The start page that shows all the links(volumes) and has a "go to random volume" button
 export default function HomePage() {
   const router = useRouter();
   function handleRandomValueButton() {
